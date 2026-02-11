@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "$id": "https://github.com/Ronakshoghi/MetadataSchema/blob/main/microstructure_sensitive_mechanical_metadata_schema.json",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "object",
   "description": "A workflow-centric metadata schema for microstructure-sensitive mechanical data",
   "properties": {
@@ -521,14 +521,26 @@
       },
       "description": "Defines thermal boundary conditions including vertex lists, constraints, loading modes, and applied loads."
     },
-    "material": {
+    "phase": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "material_identifier": {
+          "phase_name": {
             "type": "string",
-            "description": "Name identifying the material."
+            "description": "Name identifying the phase."
+          },
+          "phase_id": {
+            "type": "integer",
+            "description": "Integer ID assigned to the material phase."
+          },
+          "volume_fraction": {
+            "type": "number",
+            "description": "Volume fraction of the material phase within the RVE."
+          },
+          "lattice_structure": {
+            "type": "string",
+            "description": "Describes the crystal lattice structure of the material phase (e.g., FCC, BCC, HCP)."
           },
           "constitutive_model": {
             "$ref": "https://raw.githubusercontent.com/Ronakshoghi/MetadataSchema/main/general_constitutive_model_metadata_schema.json",
@@ -616,9 +628,13 @@
             "description": "Describes the material's orientation, including Euler angles, grain count, and texture type."
           }
         },
-        "required": ["material_identifier", "constitutive_model"],
+        "required": ["phase_name", "constitutive_model"],
         "description": "Material definition including constitutive model and orientation."
       }
+    },
+    "microstructure": {
+      "$ref": "https://github.com/YousefRezek/MicrostructureEvolutionDataSchema/blob/main/Microstructure_Module.json",
+      "description": "The microstructure object is optional and can include any microstructure evolution data defined in the Microstructure Evolution Data Schema"
     },
     "stress": {
       "type": "object",
@@ -669,7 +685,6 @@
       "required": [],
       "description": "The stress object is mandatory and must include at least the equivalent stress values."
     },
-
     "total_strain": {
       "type": "object",
       "properties": {
