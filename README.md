@@ -1,6 +1,16 @@
-<div align="center">
+<p align="center">
+  <img src="./assets/logo/mimedat-logo.svg" alt="MiMeDat logo" width="180"/>
+</p>
 
-<img src="assets/logo/mimedat-logo.svg" alt="MiMeDat logo" width="180"/>
+<h1 align="center">
+MiMeDat (Microstructure & Mechanical Data): A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects
+</h1>
+
+<p align="center">
+  <strong>A modular metadata schema for describing, validating, exchanging, and reusing microstructure-sensitive mechanical data across material-modeling workflows.</strong>
+</p>
+
+---
 
 # MiMeDat (Microstructure & Mechanical Data): A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects
 
