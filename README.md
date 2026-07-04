@@ -71,28 +71,6 @@ flowchart TB
     M --> P[Property]
     M --> MS[Microstructure]
 
-    U --> U1[Identifier]
-    U --> U2[Creator]
-    U --> U3[Rights]
-    U --> U4[Relations]
-
-    S --> S1[Software]
-    S --> S2[Version]
-    S --> S3[Hardware]
-    S --> S4[Input / output paths]
-
-    J --> J1[Geometry]
-    J --> J2[Material / phases]
-    J --> J3[Boundary conditions]
-
-    P --> P1[Stress]
-    P --> P2[Strain]
-    P --> P3[Derived properties]
-
-    MS --> MS1[Grid]
-    MS --> MS2[Grains]
-    MS --> MS3[Voxels]
-    MS --> MS4[Field data]
 ```
 
 Each module has a specific role. Together, they describe one complete workflow-generated data object.
