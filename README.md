@@ -10,24 +10,7 @@
 
 ---
 
-## 1. Hero section
-
-MiMeDat provides a structured representation for data generated in computational materials-science workflows. It builds on the workflow-centric FAIR data-object concept, where each workflow run is recorded as a uniquely identifiable data object, and extends this structure toward richer descriptions of microstructure, material information, mechanical loading, and resulting properties.
-
-```mermaid
-flowchart LR
-    A[Material-modeling workflow] --> B[MiMeDat data object]
-    B --> C[FAIR metadata]
-    B --> D[Mechanical data]
-    B --> E[Microstructure data]
-    B --> F[Reusable schema representation]
-```
-
-MiMeDat is designed as a **schema-level structure**, not as a solver-specific file format. It can be connected to different simulation tools, workflow engines, and data repositories.
-
----
-
-## 2. What is MiMeDat?
+## 1. What is MiMeDat?
 
 **MiMeDat** stands for **Microstructure & Mechanical Data**.
 
@@ -46,7 +29,7 @@ The goal is to make a data object interpretable outside the software environment
 
 ---
 
-## 3. Problem MiMeDat solves
+## 2. Problem MiMeDat solves
 
 Microstructure-sensitive mechanical data are commonly produced by multi-step workflows.
 
@@ -72,7 +55,7 @@ MiMeDat addresses these issues by keeping workflow context, material description
 
 ---
 
-## 4. Schema architecture
+## 3. Schema architecture
 
 A MiMeDat data object is organized into five main modules.
 
@@ -114,7 +97,7 @@ Each module has a specific role. Together, they describe one complete workflow-g
 
 ---
 
-## 5. Module overview
+## 4. Module overview
 
 ### User module
 
@@ -218,7 +201,7 @@ Detailed documentation of the microstructure module is maintained in the dedicat
 
 ---
 
-## 6. Minimal JSON skeleton
+## 5. Minimal JSON skeleton
 
 A simplified MiMeDat object follows this high-level structure.
 
@@ -284,7 +267,7 @@ This skeleton is only an orientation map. The full schema defines the required f
 
 ---
 
-## 7. Resources, citation, and contact
+## 6. Resources, citation, and contact
 
 ### Schema resources
 
