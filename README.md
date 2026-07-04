@@ -31,27 +31,29 @@ The goal is to make a data object interpretable outside the software environment
 
 ## 2. Problem MiMeDat solves
 
-Microstructure-sensitive mechanical data are commonly produced by multi-step workflows.
+MiMeDat addresses a **data-infrastructure problem** in microstructure-sensitive materials mechanics. Mechanical properties depend strongly on microstructure and thermo-mechanical history, but the data needed to describe this relation are often sparse, expensive to generate, and difficult to reuse without consistent metadata.
+
+The schema does not prescribe one specific workflow or require several simulation tools. Instead, it provides a common structure for turning any well-defined material-modeling workflow into a FAIR data object. This object combines the scientific result with the context needed to interpret, validate, search, and reuse it.
 
 ```mermaid
 flowchart LR
-    A[Microstructure generation] --> B[Mechanical simulation]
-    B --> C[Post-processing]
-    C --> D[Property extraction]
-    D --> E[FAIR data object]
+    A[Material-modeling workflow] --> B[MiMeDat schema]
+    B --> C[FAIR data object]
+    C --> D[Searchable data collection]
+    C --> E[Reproducible workflow record]
+    C --> F[Reusable mechanical and microstructure data]
 ```
 
-In practice, each tool often stores its inputs, outputs, metadata, and field quantities in its own structure. This creates interoperability and reproducibility problems.
-
-| Challenge | Consequence |
+| Data-infrastructure challenge | What MiMeDat provides |
 |---|---|
-| Tool-specific formats | Data are difficult to exchange between workflows. |
-| Missing metadata | Simulations are difficult to reproduce. |
-| Weak workflow context | Data objects cannot be interpreted independently. |
-| Inconsistent data structure | Collections are hard to search, validate, and reuse. |
-| Limited microstructure representation | Grain-, voxel-, or field-level information may be lost. |
+| Sparse microstructure-sensitive mechanical datasets | A structured way to generate reusable simulation-derived data objects. |
+| Metadata separated from numerical results | One schema object combining user, system, job, property, and microstructure information. |
+| Weak reproducibility context | Explicit recording of software, system, geometry, material model, boundary conditions, and units. |
+| Inconsistent data organization | A modular JSON schema with validation rules and controlled structure. |
+| Difficult search and reuse | FAIR-oriented metadata fields that make purpose-specific datasets easier to collect and compare. |
+| Limited extensibility | Separate modules that can be refined or extended, including a dedicated microstructure module. |
 
-MiMeDat addresses these issues by keeping workflow context, material description, mechanical setup, properties, and microstructure-related information in one schema-conformant data object.
+In this sense, MiMeDat is best understood as a **FAIR representation layer** for microstructure-sensitive mechanical data: it makes workflow-generated data objects structured, identifiable, and reusable beyond the local script, solver input file, or project folder in which they were created.
 
 ---
 
