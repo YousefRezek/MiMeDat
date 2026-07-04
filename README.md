@@ -1,32 +1,318 @@
-# Metadata Schema for Microstructure-Sensitive Mechanical Data (MiMeDat)  
+<div align="center">
 
-A novel metadata schema has been introduced to address the sparsity of microstructure-sensitive mechanical data. This schema was designed following the material modeling workflow, where each run of the workflow results in the creation of unique data objects. The schema includes various categorical elements to ensure the Findability, Accessibility, Interoperability, and Reusability (FAIR) of these data objects. 
+<img src="assets/logo/mimedat-logo.svg" alt="MiMeDat logo" width="180"/>
 
-  - Authors: Ronak Shoghi, Yousef Rezek, Alexander Hartmaier
-  - Organization: ICAMS, Ruhr University Bochum, Germany
-  - Contact: <ronak.shoghi@rub.de>, <yousef.rezek@rub.de>
+# MiMeDat (Microstructure & Mechanical Data): A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects
 
-## Download the JSON Schema
+**A modular metadata schema for describing, validating, exchanging, and reusing microstructure-sensitive mechanical data across material-modeling workflows.**
 
-[View or Download JSON Schema](https://github.com/Ronakshoghi/MetadataSchema/blob/main/microstructure_sensitive_mechanical_metadata_schema.json)<br>
-[View or Download the Microstructure module](https://github.com/YousefRezek/MicrostructureEvolutionDataSchema/blob/main/Microstructure_Module.json)
+</div>
 
-## Documentation
+---
 
-A paper describing the Metadata Schema can be found here: <u>[https://doi.org/10.48550/arXiv.2408.03965](https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/adem.202401876)</u>
+## 1. Hero section
 
-<img width="1185" height="1149" alt="image" src="figures/1.png" />
+MiMeDat provides a structured representation for data generated in computational materials-science workflows. It builds on the workflow-centric FAIR data-object concept, where each workflow run is recorded as a uniquely identifiable data object, and extends this structure toward richer descriptions of microstructure, material information, mechanical loading, and resulting properties.
 
-<img width="1185" height="1149" alt="image" src="figures/2.png" />
+```mermaid
+flowchart LR
+    A[Material-modeling workflow] --> B[MiMeDat data object]
+    B --> C[FAIR metadata]
+    B --> D[Mechanical data]
+    B --> E[Microstructure data]
+    B --> F[Reusable schema representation]
+```
 
-<img width="1185" height="1149" alt="image" src="figures/3.png" />
+MiMeDat is designed as a **schema-level structure**, not as a solver-specific file format. It can be connected to different simulation tools, workflow engines, and data repositories.
 
-<img width="1185" height="1149" alt="image" src="figures/4.png" />
+---
 
-<img width="1185" height="1149" alt="image" src="figures/5.png" />
+## 2. What is MiMeDat?
 
-<img width="1185" height="1149" alt="image" src="figures/6.png" />
+**MiMeDat** stands for **Microstructure & Mechanical Data**.
 
-<img width="1185" height="1149" alt="image" src="figures/7.png" />
+It is a **JSON-based**, **modular**, **workflow-centric**, and **code-agnostic** schema for representing FAIR data objects generated in microstructure-sensitive mechanical workflows.
 
-<img width="1185" height="1149" alt="image" src="figures/8.png" />
+The schema describes:
+
+- who created the data,
+- where and how the data were generated,
+- which material system and simulation setup were used,
+- which mechanical or thermal boundary conditions were applied,
+- which properties were computed or extracted,
+- and, where available, how the microstructure is represented.
+
+The goal is to make a data object interpretable outside the software environment that generated it.
+
+---
+
+## 3. Problem MiMeDat solves
+
+Microstructure-sensitive mechanical data are commonly produced by multi-step workflows.
+
+```mermaid
+flowchart LR
+    A[Microstructure generation] --> B[Mechanical simulation]
+    B --> C[Post-processing]
+    C --> D[Property extraction]
+    D --> E[FAIR data object]
+```
+
+In practice, each tool often stores its inputs, outputs, metadata, and field quantities in its own structure. This creates interoperability and reproducibility problems.
+
+| Challenge | Consequence |
+|---|---|
+| Tool-specific formats | Data are difficult to exchange between workflows. |
+| Missing metadata | Simulations are difficult to reproduce. |
+| Weak workflow context | Data objects cannot be interpreted independently. |
+| Inconsistent data structure | Collections are hard to search, validate, and reuse. |
+| Limited microstructure representation | Grain-, voxel-, or field-level information may be lost. |
+
+MiMeDat addresses these issues by keeping workflow context, material description, mechanical setup, properties, and microstructure-related information in one schema-conformant data object.
+
+---
+
+## 4. Schema architecture
+
+A MiMeDat data object is organized into five main modules.
+
+```mermaid
+flowchart TB
+    M[MiMeDat data object]
+
+    M --> U[User]
+    M --> S[System]
+    M --> J[Job]
+    M --> P[Property]
+    M --> MS[Microstructure]
+
+    U --> U1[Identifier]
+    U --> U2[Creator]
+    U --> U3[Rights]
+    U --> U4[Relations]
+
+    S --> S1[Software]
+    S --> S2[Version]
+    S --> S3[Hardware]
+    S --> S4[Input / output paths]
+
+    J --> J1[Geometry]
+    J --> J2[Material / phases]
+    J --> J3[Boundary conditions]
+
+    P --> P1[Stress]
+    P --> P2[Strain]
+    P --> P3[Derived properties]
+
+    MS --> MS1[Grid]
+    MS --> MS2[Grains]
+    MS --> MS3[Voxels]
+    MS --> MS4[Field data]
+```
+
+Each module has a specific role. Together, they describe one complete workflow-generated data object.
+
+---
+
+## 5. Module overview
+
+### User module
+
+The **User** module records identity, authorship, ownership, access, rights, and relation metadata.
+
+| Content | Purpose |
+|---|---|
+| Identifier | Gives the data object a unique reference. |
+| Title | Provides a human-readable name for the object. |
+| Creator and affiliation | Records authorship and institutional context. |
+| Rights and rights holder | Defines ownership and reuse conditions. |
+| Shared-with information | Supports controlled access and sharing. |
+| Relation metadata | Links the object to related objects or resources. |
+
+Relation metadata can be used to describe how one data object is connected to another, for example when a downstream simulation starts from a state generated by an upstream workflow stage.
+
+---
+
+### System module
+
+The **System** module records the computational environment used to generate the data.
+
+| Content | Purpose |
+|---|---|
+| Software name | Identifies the tool or workflow component. |
+| Software version | Supports reproducibility. |
+| Operating system | Documents the execution environment. |
+| System version | Records platform details. |
+| Processor specifications | Captures computational hardware context. |
+| Input and result paths | Connects the schema object to workflow files. |
+
+This module records which software produced the data without making the schema dependent on that software.
+
+---
+
+### Job module
+
+The **Job** module defines what was simulated and how.
+
+```mermaid
+flowchart LR
+    J[Job] --> G[Geometry]
+    J --> M[Material / phases]
+    J --> BC[Boundary conditions]
+```
+
+| Submodule | Description |
+|---|---|
+| Geometry | RVE size, discretization, continuity, and origin. |
+| Material / phases | Phase information, constitutive models, orientations, and material parameters. |
+| Boundary conditions | Mechanical and thermal loading information. |
+
+The boundary-condition representation can describe finite-element-style constraints, such as loads or displacements applied to faces, edges, or vertices. It can also represent macroscopic loading cases used by spectral or FFT-based solvers, where loading is prescribed at the level of the full representative volume element.
+
+---
+
+### Property module
+
+The **Property** module stores the mechanical response extracted from simulation output or post-processing.
+
+| Content | Purpose |
+|---|---|
+| Stress | Stores mechanical response measures. |
+| Strain | Stores deformation response measures. |
+| Plastic strain or other quantities | Supports optional derived quantities. |
+| Units | Makes numerical values interpretable and reusable. |
+
+The property module is intended for homogenized or post-processed quantities associated with the workflow-generated data object.
+
+---
+
+### Microstructure module
+
+The **Microstructure** module stores microstructure-related information. In the extended MiMeDat representation, it can describe microstructure as an ordered sequence of states or snapshots.
+
+```mermaid
+flowchart TB
+    MS[Microstructure module] --> S0[Snapshot 0]
+    MS --> S1[Snapshot 1]
+    MS --> S2[Snapshot n]
+
+    S0 --> G0[Grid]
+    S0 --> GR0[Grains]
+    S0 --> V0[Voxels]
+
+    S1 --> G1[Grid]
+    S1 --> GR1[Grains]
+    S1 --> V1[Voxels + field data]
+```
+
+A snapshot may contain:
+
+| Level | Example content |
+|---|---|
+| Grid | Grid status, size, and spacing. |
+| Grain | Grain ID, phase ID, orientation, and grain volume. |
+| Voxel | Voxel ID, grain ID, phase ID, position, and orientation. |
+| Field data | Stress, strain, deformation gradient, or additional state variables. |
+
+Detailed documentation of the microstructure module is maintained in the dedicated microstructure-module repository.
+
+---
+
+## 6. Minimal JSON skeleton
+
+A simplified MiMeDat object follows this high-level structure.
+
+```json
+{
+  "user": {
+    "identifier": "unique_data_object_id",
+    "title": "Example MiMeDat data object",
+    "creator": "Name",
+    "creator_affiliation": "Institution",
+    "rights": "License",
+    "rights_holder": "Owner"
+  },
+
+  "system": {
+    "software": "Simulation or workflow tool",
+    "software_version": "version",
+    "system": "operating system",
+    "system_version": "version",
+    "processor_specifications": "processor information",
+    "input_path": "path/to/input",
+    "results_path": "path/to/results"
+  },
+
+  "job": {
+    "geometry": {
+      "RVE_size": [1.0, 1.0, 1.0],
+      "RVE_continuity": true,
+      "discretization_type": "structured",
+      "discretization_unit_size": [0.015625, 0.015625, 0.015625],
+      "discretization_count": [64, 64, 64]
+    },
+    "material": {
+      "phases": [],
+      "constitutive_model": {},
+      "orientation": []
+    },
+    "boundary_conditions": {
+      "mechanical_BC": [],
+      "thermal_BC": []
+    }
+  },
+
+  "property": {
+    "stress": {},
+    "strain": {},
+    "units": {}
+  },
+
+  "microstructure": [
+    {
+      "id": "snapshot_id",
+      "time": 0.0,
+      "grid": {},
+      "grains": [],
+      "voxels": []
+    }
+  ]
+}
+```
+
+This skeleton is only an orientation map. The full schema defines the required fields, allowed types, controlled values, and validation rules.
+
+---
+
+## 7. Resources, citation, and contact
+
+### Schema resources
+
+- Main metadata schema:  
+  [microstructure_sensitive_mechanical_metadata_schema.json](https://github.com/Ronakshoghi/MetadataSchema/blob/main/microstructure_sensitive_mechanical_metadata_schema.json)
+
+- Microstructure module:  
+  [Microstructure_Module.json](https://github.com/YousefRezek/MicrostructureEvolutionDataSchema/blob/main/Microstructure_Module.json)
+
+### Related publications
+
+- Ronak Shoghi and Alexander Hartmaier,  
+  *A Workflow-Centric Approach to Generating FAIR Data Objects for Computationally Generated Microstructure-Sensitive Mechanical Data*,  
+  Advanced Engineering Materials, 2025.  
+  https://doi.org/10.1002/adem.202401876
+
+- Yousef Rezek, Ronak Shoghi, Alexander Hartmaier,  
+  *MiMeDat: A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects Capturing Microstructure Evolution and Mechanical Data in Multi-Tool Processing–Structure–Properties Workflows.*
+
+### Authors
+
+- Ronak Shoghi
+- Yousef Rezek
+- Alexander Hartmaier
+
+**Organization:** ICAMS, Ruhr University Bochum, Germany
+
+**Contact:**
+
+- ronak.shoghi@rub.de
+- yousef.rezek@rub.de
