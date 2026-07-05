@@ -13,7 +13,7 @@ MiMeDat (Microstructure & Mechanical Data): A Modular, Workflow-Centric, Code-Ag
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=18&duration=2600&pause=900&color=5DABFF&center=true&vCenter=true&width=720&lines=Mi+=+Microstructure;Me+=+Mechanical;Dat+=+Data;" alt="MiMeDat Studio animated intro" />
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=18&duration=2600&pause=900&color=5DABFF&center=true&vCenter=true&width=720&lines=Mi+=+Microstructure;Me+=+Mechanical;Dat+=+Data;" alt="MiMeDat Schema animated intro" />
 </p>
 
 ---
@@ -141,16 +141,12 @@ The **Job** module defines what was simulated and how.
 ```mermaid
 flowchart LR
     J[Job] --> G[Geometry]
-    J --> M[Material / phases]
+    J --> MAT[Material / phases]
     J --> BC[Boundary conditions]
-	
-	classDef job fill:#548235,stroke:#385723,color:#FFFFFF,stroke-width:1.5px;
-	
-	class J job;
-	class G job;
-	class M job;
-	class BC job;
-	
+
+    classDef job fill:#548235,stroke:#385723,color:#FFFFFF,stroke-width:1.5px;
+
+    class J,G,MAT,BC job;
 ```
 
 | Submodule | Description |
@@ -195,21 +191,10 @@ flowchart TB
     S1 --> G1[Grid]
     S1 --> GR1[Grains]
     S1 --> V1[Voxels + field data]
-	
-	classDef microstructure fill:#7F7F7F,stroke:#595959,color:#FFFFFF,stroke-width:1.5px;
-	
-	class MS microstructure;
-	class S0 microstructure;
-	class S1 microstructure;
-	class S2 microstructure;
-	
-	class G0 microstructure;
-	class GR0 microstructure;
-	class V0 microstructure;
-	
-	class G1 microstructure;
-	class GR1 microstructure;
-	class V1 microstructure;
+
+    classDef microstructure fill:#7F7F7F,stroke:#595959,color:#FFFFFF,stroke-width:1.5px;
+
+    class MS,S0,S1,S2,G0,GR0,V0,G1,GR1,V1 microstructure;
 ```
 
 A snapshot may contain:
@@ -310,6 +295,7 @@ This skeleton is only an orientation map. The full schema defines the required f
 
 - Yousef Rezek, Ronak Shoghi, Alexander Hartmaier,  
   *MiMeDat: A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects Capturing Microstructure Evolution and Mechanical Data in Multi-Tool Processing–Structure–Properties Workflows.*
+  > The MiMeDat schema is under active development; details may change as the schema and accompanying paper are finalized.
 
 ### Authors
 
