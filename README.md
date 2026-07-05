@@ -143,6 +143,14 @@ flowchart LR
     J[Job] --> G[Geometry]
     J --> M[Material / phases]
     J --> BC[Boundary conditions]
+	
+	classDef job fill:#548235,stroke:#385723,color:#FFFFFF,stroke-width:1.5px;
+	
+	class J job;
+	class G job;
+	class M job;
+	class BC job;
+	
 ```
 
 | Submodule | Description |
@@ -187,6 +195,21 @@ flowchart TB
     S1 --> G1[Grid]
     S1 --> GR1[Grains]
     S1 --> V1[Voxels + field data]
+	
+	classDef microstructure fill:#7F7F7F,stroke:#595959,color:#FFFFFF,stroke-width:1.5px;
+	
+	class MS microstructure;
+	class S0 microstructure;
+	class S1 microstructure;
+	class S2 microstructure;
+	
+	class G0 microstructure;
+	class GR0 microstructure;
+	class V0 microstructure;
+	
+	class G1 microstructure;
+	class GR1 microstructure;
+	class V1 microstructure;
 ```
 
 A snapshot may contain:
