@@ -1,15 +1,20 @@
+# MiMeDat Schema
+
 <p align="center">
-  <img src="./assets/logo/mimedat-logo.svg" alt="MiMeDat logo" width="180"/>
+  <img src="./assets/logo/mimedat-logo.svg" alt="MiMeDat logo" width="160"/>
 </p>
 
-<h1 align="center">
+<h3 align="center">
 MiMeDat (Microstructure & Mechanical Data): A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects
-</h1>
+</h3>
 
 <p align="center">
-  <strong>A modular metadata schema for describing, validating, exchanging, and reusing microstructure-sensitive mechanical data across material-modeling workflows.</strong>
+  <em>A modular metadata schema for describing, validating, exchanging, and reusing microstructure-sensitive mechanical data across material-modeling workflows.</em>
 </p>
 
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=18&duration=2600&pause=900&color=5DABFF&center=true&vCenter=true&width=720&lines=MiMeDO+inspection+workspace;Mi+=+Microstructure;Me+=+Mechanical;Dat+=+Data;" alt="MiMeDat Studio animated intro" />
+</p>
 ---
 
 # MiMeDat (Microstructure & Mechanical Data): A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects
