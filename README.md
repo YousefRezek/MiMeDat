@@ -1,4 +1,4 @@
-# MiMeDat (Microstructure & Mechanical Data): A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects
+# MiMeDat Schema
 
 <p align="center">
   <img src="./assets/logo/mimedat-logo.svg" alt="MiMeDat logo" width="160"/>
