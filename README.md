@@ -13,7 +13,7 @@ MiMeDat (Microstructure & Mechanical Data): A Modular, Workflow-Centric, Code-Ag
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=18&duration=2600&pause=900&color=5DABFF&center=true&vCenter=true&width=720&lines=MiMeDO+inspection+workspace;Mi+=+Microstructure;Me+=+Mechanical;Dat+=+Data;" alt="MiMeDat Studio animated intro" />
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=18&duration=2600&pause=900&color=5DABFF&center=true&vCenter=true&width=720&lines=Mi+=+Microstructure;Me+=+Mechanical;Dat+=+Data;" alt="MiMeDat Studio animated intro" />
 </p>
 
 ---
@@ -79,6 +79,19 @@ flowchart TB
     M --> P[Property]
     M --> MS[Microstructure]
 
+    classDef root fill:#1F2937,stroke:#111827,color:#FFFFFF,stroke-width:2px;
+    classDef user fill:#4472C4,stroke:#2F5597,color:#FFFFFF,stroke-width:1.5px;
+    classDef system fill:#7030A0,stroke:#4F1F73,color:#FFFFFF,stroke-width:1.5px;
+    classDef job fill:#548235,stroke:#385723,color:#FFFFFF,stroke-width:1.5px;
+    classDef property fill:#C55A11,stroke:#843C0C,color:#FFFFFF,stroke-width:1.5px;
+    classDef microstructure fill:#7F7F7F,stroke:#595959,color:#FFFFFF,stroke-width:1.5px;
+
+    class M root;
+    class U user;
+    class S system;
+    class J job;
+    class P property;
+    class MS microstructure;
 ```
 
 Each module has a specific role. Together, they describe one complete workflow-generated data object.
