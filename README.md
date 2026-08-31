@@ -5,7 +5,7 @@
 </p>
 
 <h3 align="center">
-MiMeDat (Microstructure & Mechanical Data): A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects
+MiMeDat: A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects
 </h3>
 
 <p align="center">
@@ -13,14 +13,48 @@ MiMeDat (Microstructure & Mechanical Data): A Modular, Workflow-Centric, Code-Ag
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=18&duration=2600&pause=900&color=5DABFF&center=true&vCenter=true&width=720&lines=Mi+=+Microstructure;Me+=+Mechanical;Dat+=+Data;" alt="MiMeDat Schema animated intro" />
+  <img src="./assets/logo/mimedat-animation.svg"
+       width="720"/>
 </p>
 
 ---
+## Resources, citation, and contact
+
+### Schema resources
+
+- Main metadata schema:  
+  [microstructure_sensitive_mechanical_metadata_schema.json](https://github.com/Ronakshoghi/MetadataSchema/blob/main/microstructure_sensitive_mechanical_metadata_schema.json)
+
+- Microstructure module:  
+  [Microstructure_Module.json](https://github.com/YousefRezek/MicrostructureEvolutionDataSchema/blob/main/Microstructure_Module.json)
+
+### Related publications
+
+- Ronak Shoghi and Alexander Hartmaier,  
+  *A Workflow-Centric Approach to Generating FAIR Data Objects for Computationally Generated Microstructure-Sensitive Mechanical Data*,  
+  Advanced Engineering Materials, 2025.  
+  https://doi.org/10.1002/adem.202401876
+
+- Yousef Rezek, Ronak Shoghi, Alexander Hartmaier,  
+  *MiMeDat: A Modular, Workflow-Centric Schema for[RS1.1] Creating FAIR Data Objects that Capture Microstructure Evolution and Mechanical Data in Processing–Structure–Properties Workflows.*
+  > The MiMeDat schema is under active development; details may change as the schema and accompanying paper are finalized.
+
+### Authors
+
+- Ronak Shoghi
+- Yousef Rezek
+- Alexander Hartmaier
+
+**Organization:** ICAMS, Ruhr University Bochum, Germany
+
+**Contact:**
+
+- ronak.shoghi@rub.de
+- yousef.rezek@rub.de
 
 ## 1. What is MiMeDat?
 
-**MiMeDat** stands for **Microstructure & Mechanical Data**.
+**MiMeDat** stands for **Microstructure-sensitive Mechanical Data**.
 
 It is a **JSON-based**, **modular**, **workflow-centric**, and **code-agnostic** schema for representing FAIR data objects generated in microstructure-sensitive mechanical workflows.
 
@@ -209,103 +243,3 @@ A snapshot may contain:
 Detailed documentation of the microstructure module is maintained in the dedicated microstructure-module repository.
 
 ---
-
-## 5. Minimal JSON skeleton
-
-A simplified MiMeDat object follows this high-level structure.
-
-```json
-{
-  "user": {
-    "identifier": "unique_data_object_id",
-    "title": "Example MiMeDat data object",
-    "creator": "Name",
-    "creator_affiliation": "Institution",
-    "rights": "License",
-    "rights_holder": "Owner"
-  },
-
-  "system": {
-    "software": "Simulation or workflow tool",
-    "software_version": "version",
-    "system": "operating system",
-    "system_version": "version",
-    "processor_specifications": "processor information",
-    "input_path": "path/to/input",
-    "results_path": "path/to/results"
-  },
-
-  "job": {
-    "geometry": {
-      "RVE_size": [1.0, 1.0, 1.0],
-      "RVE_continuity": true,
-      "discretization_type": "structured",
-      "discretization_unit_size": [0.015625, 0.015625, 0.015625],
-      "discretization_count": [64, 64, 64]
-    },
-    "material": {
-      "phases": [],
-      "constitutive_model": {},
-      "orientation": []
-    },
-    "boundary_conditions": {
-      "mechanical_BC": [],
-      "thermal_BC": []
-    }
-  },
-
-  "property": {
-    "stress": {},
-    "strain": {},
-    "units": {}
-  },
-
-  "microstructure": [
-    {
-      "id": "snapshot_id",
-      "time": 0.0,
-      "grid": {},
-      "grains": [],
-      "voxels": []
-    }
-  ]
-}
-```
-
-This skeleton is only an orientation map. The full schema defines the required fields, allowed types, controlled values, and validation rules.
-
----
-
-## 6. Resources, citation, and contact
-
-### Schema resources
-
-- Main metadata schema:  
-  [microstructure_sensitive_mechanical_metadata_schema.json](https://github.com/Ronakshoghi/MetadataSchema/blob/main/microstructure_sensitive_mechanical_metadata_schema.json)
-
-- Microstructure module:  
-  [Microstructure_Module.json](https://github.com/YousefRezek/MicrostructureEvolutionDataSchema/blob/main/Microstructure_Module.json)
-
-### Related publications
-
-- Ronak Shoghi and Alexander Hartmaier,  
-  *A Workflow-Centric Approach to Generating FAIR Data Objects for Computationally Generated Microstructure-Sensitive Mechanical Data*,  
-  Advanced Engineering Materials, 2025.  
-  https://doi.org/10.1002/adem.202401876
-
-- Yousef Rezek, Ronak Shoghi, Alexander Hartmaier,  
-  *MiMeDat: A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects Capturing Microstructure Evolution and Mechanical Data in Multi-Tool Processing–Structure–Properties Workflows.*
-  > The MiMeDat schema is under active development; details may change as the schema and accompanying paper are finalized.
-
-### Authors
-
-- Ronak Shoghi
-- Yousef Rezek
-- Alexander Hartmaier
-
-**Organization:** ICAMS, Ruhr University Bochum, Germany
-
-**Contact:**
-
-- ronak.shoghi@rub.de
-- yousef.rezek@rub.de
