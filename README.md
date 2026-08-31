@@ -13,7 +13,7 @@ MiMeDat: A Modular, Workflow-Centric, Code-Agnostic Schema for FAIR Data Objects
 </p>
 
 <p align="center">
-  <img src="./assets/logo/mimedat-animation.svg"
+  <img src="./assets/animations/mimedat-animation.svg"
        width="720"/>
 </p>
 
